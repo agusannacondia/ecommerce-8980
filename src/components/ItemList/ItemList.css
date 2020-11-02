@@ -1,0 +1,19 @@
+.ItemsBrowser {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.Browser__Container {
+    width: 100%;
+}
+
+.Items__Container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.Items__Container>* {
+    max-width: 200px;
+}

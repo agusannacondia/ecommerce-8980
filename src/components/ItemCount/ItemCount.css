@@ -1,0 +1,10 @@
+.ItemCount button {
+    height: 50px;
+    width: 50px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.ItemCount button:first-of-type {
+    margin-right: 10px;
+}

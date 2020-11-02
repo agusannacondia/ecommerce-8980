@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import NavBar from "./components/NavBar/NavBar";
+import Home from "./components/Home/Home";
 
-function App() {
+const App = () => {
+  const [articles, setArticles] = useState([]);
+  const handleAddArticle = () => {
+    setArticles(articles + 1);
+  };
+
+  const handleRemoveArticle = () => {
+    setArticles(articles === 0 ? 0 : articles - 1);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <NavBar articles={articles} />
+      <Home
+        greeting={"Bienvenido al E-commerce"}
+        addArticle={handleAddArticle}
+        removeArticle={handleRemoveArticle}
+      />
     </div>
   );
-}
+};
 
 export default App;
