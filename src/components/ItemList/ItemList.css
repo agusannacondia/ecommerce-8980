@@ -1,19 +1,21 @@
 .ItemsBrowser {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .Browser__Container {
-    width: 100%;
+  width: 100%;
 }
 
 .Items__Container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.Items__Container>* {
-    max-width: 200px;
+.Items__Container > * {
+  max-width: 200px;
 }

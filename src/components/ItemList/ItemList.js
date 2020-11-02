@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Browser from "../Browser/Browser";
 import Item from "../Item/Item";
 
+import "./ItemList.css";
+
 const ItemList = () => {
   const [items, setItems] = useState([]);
   const [search, setSearch] = useState("");
@@ -17,7 +19,7 @@ const ItemList = () => {
       fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${search}`)
         .then((response) => response.json())
         .then((data) => {
-            setItems(data.results)
+          setItems(data.results);
         });
     };
     getItemsFromApi();
