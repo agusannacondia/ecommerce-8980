@@ -3,7 +3,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Home from "./components/Home/Home";
 
 const App = () => {
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState(0);
   const handleAddArticle = () => {
     setArticles(articles + 1);
   };
