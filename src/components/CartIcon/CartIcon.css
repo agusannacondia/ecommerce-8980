@@ -1,0 +1,20 @@
+.cart-label {
+  margin-left: 20px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-label p {
+  margin-left: 10px;
+  background-color: black;
+  display: inline-block;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: center;
+}

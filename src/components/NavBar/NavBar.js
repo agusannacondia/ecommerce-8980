@@ -1,29 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./NavBar.css";
+import { Link } from "react-router-dom";
 import CartIcon from "../CartIcon/CartIcon";
+import CartContext from "../../contexts/Cart/CartContext";
 
-const NavBar = ({ articles }) => (
-  <nav>
-    <div className="nav-wrapper">
-      <a href="/" className="brand-logo">
-        <CartIcon />
-      </a>
-      <ul id="nav-mobile" className="right hide-on-med-and-down">
-        <li>
-          <a href="/">Cantidad de articulos: {articles}</a>
-        </li>
-        <li>
-          <a href="/">Opcion 1</a>
-        </li>
-        <li>
-          <a href="/">Opcion 2</a>
-        </li>
-        <li>
-          <a href="/">Opcion 3</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-);
+const NavBar = () => {
+  const { articlesLength } = useContext(CartContext);
+  return (
+    <nav>
+      <div className="nav-wrapper">
+        <Link to="/cart" className="brand-logo">
+          <CartIcon quantity={articlesLength}/>
+        </Link>
+        <ul id="nav-mobile" className="right hide-on-med-and-down">
+          <li>
+            <Link to="/cart">Cantidad de articulos: {articlesLength}</Link>
+          </li>
+          <li>
+            <Link to="/">Opcion 1</Link>
+          </li>
+          <li>
+            <Link to="/">Opcion 2</Link>
+          </li>
+          <li>
+            <Link to="/">Opcion 3</Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+};
 
 export default NavBar;

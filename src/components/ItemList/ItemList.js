@@ -15,14 +15,11 @@ const ItemList = () => {
   };
 
   useEffect(() => {
-    const getItemsFromApi = () => {
-      fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${search}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setItems(data.results);
-        });
-    };
-    getItemsFromApi();
+    fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${search}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setItems(data.results);
+      });
   }, [search]);
 
   return (

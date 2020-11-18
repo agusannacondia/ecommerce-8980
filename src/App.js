@@ -1,25 +1,28 @@
-import { useState } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./components/Home/Home";
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+import Cart from "./components/Cart/Cart";
+import CartProvider from "./contexts/Cart/CartProvider";
 
 const App = () => {
-  const [articles, setArticles] = useState(0);
-  const handleAddArticle = () => {
-    setArticles(articles + 1);
-  };
-
-  const handleRemoveArticle = () => {
-    setArticles(articles === 0 ? 0 : articles - 1);
-  };
   return (
-    <div>
-      <NavBar articles={articles} />
-      <Home
-        greeting={"Bienvenido al E-commerce"}
-        addArticle={handleAddArticle}
-        removeArticle={handleRemoveArticle}
-      />
-    </div>
+    <BrowserRouter>
+      <CartProvider>
+        <NavBar />
+        <Switch>
+          <Route exact path="/">
+            <Home greeting={"Bienvenido al E-commerce"} />
+          </Route>
+          <Route path="/item/:id">
+            <ItemDetailContainer />
+          </Route>
+          <Route path="/cart">
+            <Cart />
+          </Route>
+        </Switch>
+      </CartProvider>
+    </BrowserRouter>
   );
 };
 
