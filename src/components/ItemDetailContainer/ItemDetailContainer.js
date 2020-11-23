@@ -6,19 +6,16 @@ import Spinner from "react-bootstrap/Spinner";
 import { CartContext } from "../../contexts/Cart/CartContext";
 
 const ItemDetailContainer = () => {
-  const { addArticle } = useContext(CartContext);
+  const { addArticle, getItem, item } = useContext(CartContext);
   const { id } = useParams();
-  const [item, setItem] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`https://api.mercadolibre.com/items/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setItem(data);
-        setIsLoading(false);
-      });
+    Promise.resolve(getItem(id))
+    .then(() => {
+      setIsLoading(false);
+    })
   }, [id]);
 
   return (

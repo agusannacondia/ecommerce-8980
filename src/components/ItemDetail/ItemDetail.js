@@ -19,7 +19,7 @@ const ItemDetail = ({ data, addArticle }) => {
   return (
     <div className={styles.card}>
       <div className={styles.cardImage}>
-        <img src={data.pictures[0].url} alt={data.title} />
+        <img src={data.thumbnail} alt={data.title} />
       </div>
       <div className={styles.cardContent}>
         <h3>{getPriceString(data.price)}</h3>

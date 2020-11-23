@@ -24,7 +24,7 @@ const Item = ({ data }) => {
       <div className="card-content">
         <span className="card-title">{getPriceString(data.price)}</span>
         <Link
-          to={`item/${data.id}`}
+          to={`/item/${data.id}`}
           className="btn-floating halfway-fab waves-effect waves-light red"
         >
           <i className="material-icons" target="_blank" rel="noreferrer">

@@ -1,26 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Browser from "../Browser/Browser";
 import Item from "../Item/Item";
+import { CartContext } from "../../contexts/Cart/CartContext";
 
 import "./ItemList.css";
 
 const ItemList = () => {
-  const [items, setItems] = useState([]);
-  const [search, setSearch] = useState("");
+  const { getItems, items } = useContext(CartContext);
 
   const handleChangeBrowser = (searchQuery) => {
-    if (searchQuery.length >= 3) {
-      setSearch(searchQuery);
+    if (searchQuery.length >= 3 || searchQuery === "") {
+      getItems(searchQuery);
     }
   };
 
   useEffect(() => {
-    fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${search}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setItems(data.results);
-      });
-  }, [search]);
+    getItems();
+  }, []);
 
   return (
     <div className="ItemsBrowser">

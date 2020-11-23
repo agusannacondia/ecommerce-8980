@@ -4,6 +4,8 @@ import Home from "./components/Home/Home";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import Cart from "./components/Cart/Cart";
 import { CartProvider } from "./contexts/Cart/CartContext";
+import Categories from "./components/Categories/Categories";
+import Category from "./components/Category/Category";
 
 const App = () => {
   return (
@@ -20,6 +22,12 @@ const App = () => {
           <Route path="/cart">
             <Cart />
           </Route>
+          <Route path="/categories/:categoryId">
+            <Category />
+          </Route>
+          <Route path="/categories">
+            <Categories />
+          </Route>          
         </Switch>
       </CartProvider>
     </BrowserRouter>
