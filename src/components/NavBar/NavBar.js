@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import CartIcon from "../CartIcon/CartIcon";
-import CartContext from "../../contexts/Cart/CartContext";
+import { CartContext } from "../../contexts/Cart/CartContext";
 
 const NavBar = () => {
   const { articlesLength } = useContext(CartContext);
@@ -10,20 +10,20 @@ const NavBar = () => {
     <nav>
       <div className="nav-wrapper">
         <Link to="/cart" className="brand-logo">
-          <CartIcon quantity={articlesLength}/>
+          <CartIcon quantity={articlesLength} />
         </Link>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li>
-            <Link to="/cart">Cantidad de articulos: {articlesLength}</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/">Opcion 1</Link>
+            <Link to="/">Categorías</Link>
           </li>
           <li>
-            <Link to="/">Opcion 2</Link>
+            <Link to="/">Ofertas</Link>
           </li>
           <li>
-            <Link to="/">Opcion 3</Link>
+            <Link to="/">Contacto</Link>
           </li>
         </ul>
       </div>

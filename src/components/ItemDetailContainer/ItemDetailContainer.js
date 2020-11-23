@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import "./ItemDetailContainer.css";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import Spinner from "react-bootstrap/Spinner";
-import CartContext from "../../contexts/Cart/CartContext";
+import { CartContext } from "../../contexts/Cart/CartContext";
 
 const ItemDetailContainer = () => {
   const { addArticle } = useContext(CartContext);

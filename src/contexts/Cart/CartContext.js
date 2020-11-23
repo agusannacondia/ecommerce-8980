@@ -1,5 +1,21 @@
-import React from "react"
+import React, { useState } from "react"
 
 const CartContext = React.createContext();
 
-export default CartContext;
+const CartProvider = ({ defaultValue = [], children }) => {
+    const [articles, setArticles] = useState(defaultValue);
+    const addArticle = (article) => {
+      setArticles([...articles, article]);
+    };
+  
+    const removeArticle = (article) => {
+      setArticles(articles.filter((item) => item.id !== article.id));
+    };
+    return (
+      <CartContext.Provider value={{articles, articlesLength: articles.length, addArticle, removeArticle}}>
+        {children}
+      </CartContext.Provider>
+    );
+  };
+
+export { CartContext, CartProvider };

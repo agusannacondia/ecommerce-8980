@@ -3,7 +3,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Home from "./components/Home/Home";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import Cart from "./components/Cart/Cart";
-import CartProvider from "./contexts/Cart/CartProvider";
+import { CartProvider } from "./contexts/Cart/CartContext";
 
 const App = () => {
   return (
