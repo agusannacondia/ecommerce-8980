@@ -1,0 +1,36 @@
+.item {
+    padding: 20px;
+    width: 100%;
+    border-bottom: 1px solid rgb(214, 214, 214);
+}
+
+.item-body {
+    display: flex;
+    flex-direction: row;
+}
+
+.item-description {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.item-counter {
+    min-width: 20%;
+    align-self: center;
+}
+
+.item-price {
+    min-width: 10%;
+    align-self: center;
+}
+
+.item-options {
+    padding: 20px;
+}
+
+.item-options>p {
+    display: inline-block;
+    cursor: pointer;
+}

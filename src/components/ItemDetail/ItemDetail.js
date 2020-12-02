@@ -7,7 +7,7 @@ const getPriceString = (price) => {
 };
 
 const ItemDetail = ({ data, addArticle }) => {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
 
   const handleClick = () => {
     addArticle({
@@ -31,13 +31,11 @@ const ItemDetail = ({ data, addArticle }) => {
           removeArticle={() => {
             setCounter(counter - 1);
           }}
+          quantity={counter}
         />
         <br />
-        <button className="waves-effect waves-light btn" onClick={handleClick}>
-          <i className="material-icons left" target="_blank" rel="noreferrer">
-            add
-          </i>
-          Comprar {counter > 0 ? counter : ""}
+        <button className="waves-effect waves-light btn" onClick={handleClick} disabled={counter <= 0}>
+          Agregar al carrito ({counter})
         </button>
       </div>
     </div>

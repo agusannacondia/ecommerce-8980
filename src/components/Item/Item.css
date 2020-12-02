@@ -1,21 +1,25 @@
 .card {
-  border-radius: 10px;
+  position: relative;
+  border-radius: 4px;
   margin: 20px;
   min-width: 200px;
-  transition: all 0.3s;
+  height: 270px;
+  transition: all .1s ease-out;
   display: flex;
   flex-direction: column;
-  max-height: 300px;
+  box-shadow: none;
+  cursor: pointer;
 }
 
 .card:hover {
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+  height: 300px;
 }
 
 .card-image {
-  height: 50%;
+  height: 200px;
 }
 
 .card-image img {
@@ -27,12 +31,28 @@
 
 .card-content {
   background: white;
-  height: 50%;
+  height: 70px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 0px 0px 10px 10px !important;
   position: relative;
+  border-top: 1px solid rgba(51, 51, 51, 0.1);
+  transition: height 1s;
+}
+
+.card-content:hover{
+  height: 100px;
+}
+
+.card-content h5 {
+  position: absolute;
+  top: 20px;
+}
+
+.card-content p {
+  position: absolute;
+  top: 50px;
 }
 
 .card-content .btn-floating {
@@ -41,17 +61,7 @@
   right: 10px;
 }
 
-.card-content .card-title {
-  position: absolute;
-  top: -20px;
-  left: 10px;
-  padding: 5px;
-  background-color: cornsilk;
-  -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
-  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
-}
-
-.card-content .card-title p {
-  color: blue;
+.no-decoration {
+  text-decoration: none !important;
+  color: black;
 }

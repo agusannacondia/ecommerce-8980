@@ -2,7 +2,8 @@
   transition: all 0.3s;
   display: flex;
   flex-direction: row;
-  min-height: 100vh;
+  height: 50vh;
+  background-color: white;
 }
 
 .card:hover {
@@ -12,7 +13,8 @@
 }
 
 .cardImage {
-  height: 50%;
+  width: 50%;
+  height: 100%;
 }
 
 .cardImage img {
@@ -26,6 +28,8 @@
   background: white;
   height: 50%;
   display: flex;
+  align-self: center;
+  margin: 0px auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;

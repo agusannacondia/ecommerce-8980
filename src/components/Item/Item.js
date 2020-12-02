@@ -9,6 +9,7 @@ const getPriceString = (price) => {
 const Item = ({ data }) => {
   const { id } = useParams();
   const [idState, setIdState] = useState("");
+  const [showTitle, setShowTitle] = useState(false);
 
   useEffect(() => {
     setIdState(id);
@@ -17,24 +18,28 @@ const Item = ({ data }) => {
   if (!data) return <p>Hubo un error al cargar el item.</p>;
 
   return (
-    <div className="card">
-      <div className="card-image">
-        <img src={data.thumbnail} alt={data.title} />
-      </div>
-      <div className="card-content">
-        <span className="card-title">{getPriceString(data.price)}</span>
-        <Link
-          to={`/item/${data.id}`}
-          className="btn-floating halfway-fab waves-effect waves-light red"
+    <div
+      className="card"
+      onMouseEnter={() => setShowTitle(true)}
+      onMouseLeave={() => setShowTitle(false)}
+    >
+      <Link to={`/item/${data.id}`} className="no-decoration">
+        <div className="card-image">
+          <img src={data.thumbnail} alt={data.title} />
+        </div>
+        <div
+          className="card-content"
         >
-          <i className="material-icons" target="_blank" rel="noreferrer">
-            link
-          </i>
-        </Link>
-        <p>
-          {data.title} ID: {idState}
-        </p>
-      </div>
+          <h5 className="no-decoration">{getPriceString(data.price)}</h5>
+          {showTitle && (
+            <p>
+              {data.title.length > 15
+                ? data.title.substring(0, 15) + "..."
+                : data.title}
+            </p>
+          )}
+        </div>
+      </Link>
     </div>
   );
 };
