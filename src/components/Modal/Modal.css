@@ -1,0 +1,57 @@
+.modalCartResume,
+.modalUserData,
+.modalCartSuccess {
+  background-color: transparent;
+  max-height: 100%;
+}
+
+.modalFooter {
+  background-color: transparent !important;
+}
+
+.modalFooter > button {
+  margin: 0.25rem !important;
+}
+
+.modalTotal {
+  display: inline-block;
+  width: 100%;
+  padding: 20px;
+  text-align: right;
+}
+
+.modalUserData input {
+  width: 100% !important;
+}
+
+.form-control.is-valid,
+.was-validated .form-control:valid {
+    padding-right: calc(1.5em + .75rem);
+    width: calc(100% - (1.5em + .75rem)) !important;
+    background-position: right calc(.375em + 1.1875rem) center !important;
+}
+
+.form-control.is-invalid, 
+.was-validated .form-control:invalid {
+    padding-right: calc(1.5em + .75rem);
+    width: calc(100% - (1.5em + .75rem)) !important;
+    background-position: right calc(.375em + 1.1875rem) center !important;
+}
+
+.modalCartSuccess .modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalCartSuccess .modal-body p {
+    margin-top: 30px;
+    font-size: 1.75rem;
+}
+
+.confetti {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+}

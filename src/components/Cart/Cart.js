@@ -5,10 +5,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import "./Cart.css";
 import ItemCart from "../ItemCart/ItemCart";
+import { ModalCartResume, ModalUserData, ModalSuccess } from "../Modal/Modal";
 import "materialize-css";
+import Button from "react-bootstrap/Button";
+import Confetti from "react-dom-confetti";
 
 const getPriceString = (price) => {
   return `$ ${price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,")}`;
+};
+
+const config = {
+  angle: 90,
+  spread: 360,
+  startVelocity: 40,
+  elementCount: 70,
+  dragFriction: 0.12,
+  duration: 3000,
+  stagger: 3,
+  width: "10px",
+  height: "10px",
+  perspective: "500px",
+  colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"]
 };
 
 const NoItemsComponent = () => (
@@ -25,14 +42,19 @@ const NoItemsComponent = () => (
 );
 
 const Cart = () => {
-  const { order, generateOrder } = useContext(CartContext);
+  const { order, generateOrder, emptyCart } = useContext(CartContext);
+
+  const [showResume, setShowResume] = useState(false);
+  const [showUserForm, setShowUserForm] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   useEffect(() => {
     window.$(".modal").modal();
   }, []);
 
   const handleClickGenerateOrder = () => {
-    generateOrder();
+    setShowResume(true);
   };
 
   return (
@@ -55,20 +77,45 @@ const Cart = () => {
               </p>
             </div>
             <div className="cart-buttons">
-              <a
-                className="waves-effect waves-light btn modal-trigger"
-                href="#modal1"
-                onClick={handleClickGenerateOrder}
-              >
+              <Button variant="success" onClick={handleClickGenerateOrder}>
                 Generar orden
-              </a>
+              </Button>
             </div>
           </>
         )}
       </main>
-      <div id="modal1" className="modal">
-        <h4>Orden generada correctamente</h4>
-      </div>
+      <ModalCartResume
+        show={showResume}
+        handleClose={() => setShowResume(false)}
+        handleAccept={() => {
+          setShowResume(false);
+          setShowUserForm(true);
+        }}
+      />
+      <ModalUserData
+        show={showUserForm}
+        handleClose={() => setShowUserForm(false)}
+        handleAccept={(userData) => {
+          setShowUserForm(false);
+          setShowSuccess(true);
+          setShowConfetti(true);
+          generateOrder(userData);
+        }}
+      />
+      <ModalSuccess
+        show={showSuccess}
+        handleClose={() => {
+          setShowSuccess(false)
+          emptyCart();
+          setShowConfetti(false)
+        }}
+        handleAccept={() => {
+          setShowSuccess(false)
+          emptyCart();
+          setShowConfetti(false)
+        }}
+      />
+      <Confetti active={showConfetti} config={config} className="confetti" />
     </div>
   );
 };

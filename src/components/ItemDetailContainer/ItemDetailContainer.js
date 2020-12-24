@@ -16,6 +16,7 @@ const ItemDetailContainer = () => {
     .then(() => {
       setIsLoading(false);
     })
+    // eslint-disable-next-line
   }, [id]);
 
   return (

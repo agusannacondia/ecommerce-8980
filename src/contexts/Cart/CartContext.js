@@ -5,6 +5,7 @@ import { getFirestore } from "../../config/firebaseConfig";
 const CartContext = React.createContext();
 
 const CartProvider = ({ defaultValue = [], children }) => {
+  // eslint-disable-next-line
   const [articles, setArticles] = useState(defaultValue);
   const [items, setItems] = useState(defaultValue);
   const [categories, setCategories] = useState(defaultValue);
@@ -72,10 +73,9 @@ const CartProvider = ({ defaultValue = [], children }) => {
   };
 
   const removeArticle = (article) => {
-    //setArticles(articles.filter((item) => item.id !== article.id));
     setOrder({
       ...order,
-      items: order.items.filter((item) => item.item != article.item),
+      items: order.items.filter((item) => item.item !== article.item),
       amount: order.amount - article.price * article.quantity,
     });
   };
@@ -153,9 +153,12 @@ const CartProvider = ({ defaultValue = [], children }) => {
     const newOrder = {
       amount: order.amount,
       buyer: {
-        email: "test@test.com",
-        name: "Testing",
-        phone: "1126469874",
+        name: orderToGenerate.name,
+        email: orderToGenerate.email,
+        address: orderToGenerate.name,
+        state: orderToGenerate.state,
+        city: orderToGenerate.city,
+        zipCode: orderToGenerate.zipCode,
       },
       currency: "ARS",
       date: firebase.firestore.Timestamp.fromDate(new Date()),
@@ -191,13 +194,13 @@ const CartProvider = ({ defaultValue = [], children }) => {
     setOrder({
       ...order,
       items: order.items.map((item) => {
-              if (item.item === article.id) {
-                item.quantity += 1;
-                item.subtotal += article.price;
-              }
-              return item;
-            }),
-      amount: order.amount + article.price
+        if (item.item === article.id) {
+          item.quantity += 1;
+          item.subtotal += article.price;
+        }
+        return item;
+      }),
+      amount: order.amount + article.price,
     });
   };
 
@@ -205,15 +208,17 @@ const CartProvider = ({ defaultValue = [], children }) => {
     setOrder({
       ...order,
       items: order.items.map((item) => {
-              if (item.item === article.id) {
-                item.quantity -= 1;
-                item.subtotal -= article.price;
-              }
-              return item;
-            }),
-      amount: order.amount - article.price
+        if (item.item === article.id) {
+          item.quantity -= 1;
+          item.subtotal -= article.price;
+        }
+        return item;
+      }),
+      amount: order.amount - article.price,
     });
   };
+
+  const emptyCart = () => setOrder(null)
 
   return (
     <CartContext.Provider
@@ -234,6 +239,7 @@ const CartProvider = ({ defaultValue = [], children }) => {
         pushArticleToCart,
         addItemToArticle,
         removeItemFromArticle,
+        emptyCart
       }}
     >
       {children}

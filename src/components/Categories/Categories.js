@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import "./Categories.css";
 import { Link } from "react-router-dom";
@@ -10,6 +10,7 @@ const Categories = () => {
 
   useEffect(() => {
     getCategories(categoryId);
+    // eslint-disable-next-line
   }, [categoryId]);
 
   return (

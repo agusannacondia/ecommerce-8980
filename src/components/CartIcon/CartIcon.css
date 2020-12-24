@@ -18,3 +18,7 @@
   line-height: 15px;
   text-align: center;
 }
+
+.cart-label>p:last-of-type {
+  color: white;
+}

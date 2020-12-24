@@ -11,11 +11,12 @@ const Category = () => {
 
   useEffect(() => {
     getItemsByCategory(categoryId);
-    categories?.map((cat) => {
+    categories?.forEach((cat) => {
       if(cat.id === categoryId) {
         setCategoryName(cat.name.replace(/\b\w/g, l => l.toUpperCase()));
       }
     })
+    // eslint-disable-next-line
   }, [categoryId]);
 
   return (
